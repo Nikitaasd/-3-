@@ -1,0 +1,70 @@
+Задача 19
+
+Console.Clear();
+int num = GetNumberFromUser("Введите пятзначное число: ","Ошибка ввода!");
+Console.WriteLine(PolindromMethod(num));
+
+
+
+static int GetNumberFromUser(string message, string errorMessage)
+{    
+    while(true)
+    {
+        Console.Write(message);
+        bool isCorrect = int.TryParse(Console.ReadLine(), out int userNumber);
+        if(isCorrect)
+            return userNumber;
+        Console.WriteLine(errorMessage);
+    }    
+}
+
+
+static string PolindromMethod(int number)
+{
+    int b, a;
+    a = number/1000;
+    b = number % 100;
+
+    if (a == b)
+    {
+        string c = Console.WriteLine($"{number} -> да");
+        return c;
+    }
+    else
+    {
+        string d = Console.WriteLine($"{number} -> нет");
+        return d;
+    }    
+    
+}
+
+
+
+Задача 21
+
+Console.Clear();
+
+double X1 = CoordinatesByUser("Введите координату X1: ");
+double Y1 = CoordinatesByUser("Введите координату Y1: ");
+double Z1 = CoordinatesByUser("Введите координату Z1: ");
+double X2 = CoordinatesByUser("Введите координату X2: ");
+double Y2 = CoordinatesByUser("Введите координату Y2: ");
+double Z2 = CoordinatesByUser("Введите координату Z2: ");
+
+
+double res = DisPoint (X1, Y1, Z1, X2, Y2, Z2);
+Console.WriteLine ($"{res}");
+
+
+
+
+static double CoordinatesByUser (string message)
+{
+Console.Write(message);
+return double.Parse(Console.ReadLine() ?? "");   
+}
+
+static double DisPoint (double X1, double Y1, double Z1, double X2, double Y2, double Z2)
+{
+    return Math.Sqrt(Math.Pow(X2-X1, 2)+Math.Pow(Y2-Y1, 2)+Math.Pow(Z2-Z1, 2));
+}
